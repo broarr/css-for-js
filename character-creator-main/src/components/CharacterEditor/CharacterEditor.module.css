@@ -3,9 +3,6 @@
   padding-bottom: 64px;
 }
 
-.maxWidthWrapper {
-}
-
 .header {
   padding-bottom: 64px;
   max-width: 65%;
@@ -26,9 +23,10 @@
 
 .characterWrapper {
   position: fixed;
-  top: 128px;
-  right: 128px;
-  bottom: 0;
+  width: fit-content;
+  top: 20%;
+  bottom: 5%;
+  left: 55%;
   min-height: 500px;
 }
 
