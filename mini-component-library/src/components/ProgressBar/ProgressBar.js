@@ -57,7 +57,7 @@ const genBarStyles = ({ value, size }) => {
 
 const ProgressBar = ({ value, size }) => {
   const barStyles = genBarStyles({ value, size })
-  return <Wrapper style={SIZES[size]}>
+  return <Wrapper style={SIZES[size]} role='progressbar' aria-valuenow={value} aria-valuemin={0} aria-valuemax={100}>
     <Bar style={{...SIZES[size], ...barStyles}} value={value} size={size}>
       <VisuallyHidden>{value}%</VisuallyHidden>
     </Bar>
