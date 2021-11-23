@@ -8,7 +8,6 @@ import VisuallyHidden from '../VisuallyHidden';
 const SIZES = {
   small: {
     '--wrapper-height': 8 + 'px',
-    '--wrapper-width': 370 + 'px',
     '--wrapper-padding': 0,
     '--wrapper-radius': 4 + 'px',
     '--bar-height': 8 + 'px',
@@ -16,7 +15,6 @@ const SIZES = {
   },
   medium: {
     '--wrapper-height': 12 + 'px',
-    '--wrapper-width': 370 + 'px',
     '--wrapper-padding': 0,
     '--wrapper-radius': 4 + 'px',
     '--bar-height': 12 + 'px',
@@ -24,7 +22,6 @@ const SIZES = {
   },
   large: {
     '--wrapper-height': 24 + 'px',
-    '--wrapper-width': 370 + 'px',
     '--wrapper-padding': 4 + 'px',
     '--wrapper-radius': 8 + 'px',
     '--bar-height': 16 + 'px',
@@ -33,8 +30,6 @@ const SIZES = {
 }
 
 const genBarStyles = ({ value, size }) => {
-  const barWidth = (size === 'large') ? 370 - 8 : 370;
-  const width = (value/100) * barWidth;
 
   let rightRadius; 
   if (size === 'large') {
@@ -50,7 +45,6 @@ const genBarStyles = ({ value, size }) => {
   }
 
   return {
-    '--bar-width': width + 'px',
     '--bar-right-radius': rightRadius,
   }
 }
@@ -65,7 +59,7 @@ const ProgressBar = ({ value, size }) => {
 };
 
 const Wrapper = styled.div`
-  width: var(--wrapper-width);
+  width: 100%;
   height: var(--wrapper-height);
   padding: var(--wrapper-padding);
   border-radius: var(--wrapper-radius);
@@ -73,7 +67,7 @@ const Wrapper = styled.div`
 `
 
 const Bar = styled.div`
-  width: var(--bar-width);
+  width: ${p => p.value + '%'};
   height: var(--bar-height);
   background-color: ${COLORS.primary};
   border-top-left-radius: var(--bar-radius);
