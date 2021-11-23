@@ -29,30 +29,34 @@ const SIZES = {
   }
 }
 
-const genBarStyles = ({ value, size }) => {
-
-  let rightRadius; 
-  if (size === 'large') {
-    if (value > 99 && value < 100) {
-      rightRadius = 2 + 'px';
-    } else if (value >= 100) {
-      rightRadius = 4 + 'px';
-    }
-  } else if (size === 'medium') {
-    rightRadius = 4 + 'px';
-  } else {
-    rightRadius = 4 + 'px';
+const clamp = (value, minimum, maximum) => {
+  if (value > maximum) {
+    return maximum
   }
 
-  return {
-    '--bar-right-radius': rightRadius,
+  if (value < minimum) {
+    return minimum
   }
+
+  return value
+}
+
+const calcRadius = ({ value }) => {
+  if (value >= 100) {
+    return 4
+  }
+
+  if (value < 100 && value > 99) {
+    return 2
+  }
+
+  return 0
 }
 
 const ProgressBar = ({ value, size }) => {
-  const barStyles = genBarStyles({ value, size })
+  value = clamp(value, 0, 100)
   return <Wrapper style={SIZES[size]} role='progressbar' aria-valuenow={value} aria-valuemin={0} aria-valuemax={100}>
-    <Bar style={{...SIZES[size], ...barStyles}} value={value} size={size}>
+    <Bar style={SIZES[size]} value={value} size={size}>
       <VisuallyHidden>{value}%</VisuallyHidden>
     </Bar>
   </Wrapper>;
@@ -72,8 +76,8 @@ const Bar = styled.div`
   background-color: ${COLORS.primary};
   border-top-left-radius: var(--bar-radius);
   border-bottom-left-radius: var(--bar-radius);
-  border-top-right-radius: var(--bar-right-radius);
-  border-bottom-right-radius: var(--bar-right-radius);
+  border-top-right-radius: ${p => calcRadius(p) + 'px'};
+  border-bottom-right-radius: ${p => calcRadius(p) + 'px'};
 `
 
 export default ProgressBar;
