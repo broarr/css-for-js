@@ -41,18 +41,6 @@ const clamp = (value, minimum, maximum) => {
   return value
 }
 
-const calcRadius = ({ value }) => {
-  if (value >= 100) {
-    return 4
-  }
-
-  if (value < 100 && value > 99) {
-    return 2
-  }
-
-  return 0
-}
-
 const ProgressBar = ({ value, size }) => {
   value = clamp(value, 0, 100)
   return <Wrapper style={SIZES[size]} role='progressbar' aria-valuenow={value} aria-valuemin={0} aria-valuemax={100}>
@@ -69,16 +57,15 @@ const Wrapper = styled.div`
   border-radius: var(--wrapper-radius);
   background-color: ${COLORS.transparentGray15};
   box-shadow: inset 0px 2px 4px ${COLORS.transparentGray35};
+  /* NOTE (BNR): Overflow helps keep progress bar rounded at high percentages */
+  overflow: hidden;
 `
 
 const Bar = styled.div`
   width: ${p => p.value + '%'};
   height: var(--bar-height);
   background-color: ${COLORS.primary};
-  border-top-left-radius: var(--bar-radius);
-  border-bottom-left-radius: var(--bar-radius);
-  border-top-right-radius: ${p => calcRadius(p) + 'px'};
-  border-bottom-right-radius: ${p => calcRadius(p) + 'px'};
+  border-radius: 4px 0 0 4px;
 `
 
 export default ProgressBar;
