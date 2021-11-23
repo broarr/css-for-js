@@ -67,6 +67,7 @@ const Wrapper = styled.div`
   height: var(--wrapper-height);
   padding: var(--wrapper-padding);
   border-radius: var(--wrapper-radius);
+  background-color: ${COLORS.transparentGray15};
   box-shadow: inset 0px 2px 4px ${COLORS.transparentGray35};
 `
 
