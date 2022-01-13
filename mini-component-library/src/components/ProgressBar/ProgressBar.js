@@ -42,11 +42,19 @@ const clamp = (value, minimum, maximum) => {
 }
 
 const ProgressBar = ({ value, size }) => {
+  const styles = SIZES[size]
+
+  if (!styles) {
+    throw new Error(`unknown size ${size}`)
+  }
+
   value = clamp(value, 0, 100)
-  return <Wrapper style={SIZES[size]} role='progressbar' aria-valuenow={value} aria-valuemin={0} aria-valuemax={100}>
-    <Bar style={SIZES[size]} value={value} size={size}>
-      <VisuallyHidden>{value}%</VisuallyHidden>
-    </Bar>
+
+  return <Wrapper style={styles} role='progressbar' aria-valuenow={value} aria-valuemin={0} aria-valuemax={100}>
+    <VisuallyHidden>{value}%</VisuallyHidden>
+    <BarWrapper style={styles}>
+      <Bar style={styles} value={value} />
+    </BarWrapper>
   </Wrapper>;
 };
 
@@ -57,6 +65,10 @@ const Wrapper = styled.div`
   border-radius: var(--wrapper-radius);
   background-color: ${COLORS.transparentGray15};
   box-shadow: inset 0px 2px 4px ${COLORS.transparentGray35};
+`
+
+const BarWrapper = styled.div`
+  border-radius: var(--bar-radius);
   /* NOTE (BNR): Overflow helps keep progress bar rounded at high percentages */
   overflow: hidden;
 `
