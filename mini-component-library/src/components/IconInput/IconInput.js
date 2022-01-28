@@ -52,7 +52,6 @@ const IconInput = ({
 const Wrapper = styled.label`
   display: block;
   position: relative;
-  width: var(--width);
   color: ${COLORS.gray700};
 
   &:hover {
@@ -69,7 +68,7 @@ const Input = styled.input`
   font-weight: 700;
   font-size: var(--font-size);
   height: var(--height);
-  width: 100%;
+  width: var(--width);
   outline-offset: 2px;
 
   &::placeholder {
