@@ -54,6 +54,10 @@ const Wrapper = styled.label`
   position: relative;
   width: var(--width);
   color: ${COLORS.gray700};
+
+  &:hover {
+    color: ${COLORS.black};
+  }
 `
 
 const Input = styled.input`
@@ -72,10 +76,6 @@ const Input = styled.input`
     color: ${COLORS.gray700};
     font-weight: 400;
   }
-
-  &:hover {
-    color: ${COLORS.black};
-  }
 `
 
 const IconWrapper = styled.div`
@@ -85,10 +85,6 @@ const IconWrapper = styled.div`
   margin: auto 0;
   height: var(--size);
   pointer-events: none;
-
-  ${Input}:hover + & {
-    color: ${COLORS.black};
-  }
 `
 
 export default IconInput;
