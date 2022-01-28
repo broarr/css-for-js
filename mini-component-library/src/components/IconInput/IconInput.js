@@ -80,9 +80,7 @@ const IconWrapper = styled.div`
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 0;
-  margin: auto;
-  width: var(--size);
+  margin: auto 0;
   height: var(--size);
   color: ${COLORS.gray700};
   pointer-events: none;
