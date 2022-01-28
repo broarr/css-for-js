@@ -65,6 +65,7 @@ const Input = styled.input`
   font-size: var(--font-size);
   height: var(--height);
   width: 100%;
+  outline-offset: 2px;
 
   &::placeholder {
     color: ${COLORS.gray700};
