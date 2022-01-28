@@ -14,7 +14,7 @@ const SIZES = {
     '--font-size': (16 / 16) + 'rem',
     '--border-bottom': `1px solid ${COLORS.black}`,
     '--padding': 4 + 'px',
-    '--padding-left': 16 + 8 + 'px',
+    '--padding-left': 24 + 'px',
     '--height': (24 / 16) + 'rem',
   },
   'large': {
@@ -24,7 +24,7 @@ const SIZES = {
     '--font-size': (18 / 16) + 'rem',
     '--border-bottom': `2px solid ${COLORS.black}`,
     '--padding': 8 + 'px',
-    '--padding-left': 24 + 18 + 'px',
+    '--padding-left': 36 + 'px',
     '--height': (36 / 16) + 'rem',
   }
 }
