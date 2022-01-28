@@ -15,6 +15,7 @@ const SIZES = {
     '--border-bottom': `1px solid ${COLORS.black}`,
     '--padding': 4 + 'px',
     '--padding-left': 16 + 8 + 'px',
+    '--height': (24 / 16) + 'rem',
   },
   'large': {
     size: 24,
@@ -24,6 +25,7 @@ const SIZES = {
     '--border-bottom': `2px solid ${COLORS.black}`,
     '--padding': 8 + 'px',
     '--padding-left': 24 + 18 + 'px',
+    '--height': (36 / 16) + 'rem',
   }
 }
 
@@ -60,6 +62,7 @@ const Input = styled.input`
   color: ${COLORS.gray500};
   font-weight: 700;
   font-size: var(--font-size);
+  height: var(--height);
   width: 100%;
 
   &::placeholder {
