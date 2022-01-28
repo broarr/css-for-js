@@ -49,7 +49,8 @@ const IconInput = ({
   )
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled.label`
+  display: block;
   position: relative;
   width: var(--width);
 `
