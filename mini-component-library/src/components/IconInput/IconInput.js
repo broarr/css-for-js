@@ -8,24 +8,16 @@ import VisuallyHidden from '../VisuallyHidden';
 
 const SIZES = {
   'small': {
-    size: 16,
-    strokeWidth: 2,
-    '--size': 16 + 'px',
-    '--font-size': (16 / 16) + 'rem',
-    '--border-bottom': `1px solid ${COLORS.black}`,
-    '--padding': 4 + 'px',
-    '--padding-left': 24 + 'px',
-    '--height': (24 / 16) + 'rem',
+    fontSize: 14,
+    iconSize: 16,
+    borderThickness: 1,
+    height: 24,
   },
   'large': {
-    size: 24,
-    strokeWidth: 2,
-    '--size': 24 + 'px',
-    '--font-size': (18 / 16) + 'rem',
-    '--border-bottom': `2px solid ${COLORS.black}`,
-    '--padding': 8 + 'px',
-    '--padding-left': 36 + 'px',
-    '--height': (36 / 16) + 'rem',
+    fontSize: 18,
+    iconSize: 24,
+    borderThickness: 2,
+    height: 36,
   }
 }
 
@@ -36,15 +28,25 @@ const IconInput = ({
   size,
   ...delegated
 }) => {
-  const styles = { ...SIZES[size], '--width': width + 'px' }
+  const styles = SIZES[size]
 
   return (
-    <Wrapper style={styles}>
-      <Input label={label} {...delegated} type="text" />
-      <IconWrapper style={styles}>
-        <Icon id={icon} size={styles.size} strokeWidth={styles.strokeWidth} />
+    <Wrapper>
+      <IconWrapper style={{ '--size': styles.iconSize + 'px' }}>
+        <Icon id={icon} size={styles.iconSize} strokeWidth={styles.borderThickness} />
       </IconWrapper>
       <VisuallyHidden>{label}</VisuallyHidden>
+      <Input
+        type="text"
+        label={label}
+        {...delegated}
+        style={{
+          '--width': width + 'px',
+          '--height': styles.height / 16 + 'rem',
+          '--border-thickness': styles.borderThickness + 'px',
+          '--font-size': styles.fontSize / 16 + 'rem,'
+        }}
+      />
     </Wrapper>
   )
 };
@@ -61,9 +63,8 @@ const Wrapper = styled.label`
 
 const Input = styled.input`
   border: none;
-  border-bottom: var(--border-bottom);
-  padding: var(--padding);
-  padding-left: var(--padding-left);
+  border-bottom: var(--border-thickness) solid ${COLORS.black};
+  padding-left: var(--height);
   color: inherit;
   font-weight: 700;
   font-size: var(--font-size);
