@@ -34,13 +34,13 @@ const IconInput = ({
   icon,
   width = 250,
   size,
-  placeholder,
+  ...delegated
 }) => {
   const styles = { ...SIZES[size], '--width': width + 'px' }
 
   return (
     <Wrapper style={styles}>
-      <Input label={label} placeholder={placeholder} type="text" />
+      <Input label={label} {...delegated} type="text" />
       <IconWrapper style={styles}>
         <Icon id={icon} size={styles.size} strokeWidth={styles.strokeWidth} />
       </IconWrapper>
