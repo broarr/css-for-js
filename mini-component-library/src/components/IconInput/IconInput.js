@@ -84,7 +84,6 @@ const IconWrapper = styled.div`
   bottom: 0;
   margin: auto 0;
   height: var(--size);
-  pointer-events: none;
 `
 
 export default IconInput;
