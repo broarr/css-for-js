@@ -53,6 +53,7 @@ const Wrapper = styled.label`
   display: block;
   position: relative;
   width: var(--width);
+  color: ${COLORS.gray700};
 `
 
 const Input = styled.input`
@@ -60,7 +61,7 @@ const Input = styled.input`
   border-bottom: var(--border-bottom);
   padding: var(--padding);
   padding-left: var(--padding-left);
-  color: ${COLORS.gray500};
+  color: inherit;
   font-weight: 700;
   font-size: var(--font-size);
   height: var(--height);
@@ -83,7 +84,6 @@ const IconWrapper = styled.div`
   bottom: 0;
   margin: auto 0;
   height: var(--size);
-  color: ${COLORS.gray700};
   pointer-events: none;
 
   ${Input}:hover + & {
